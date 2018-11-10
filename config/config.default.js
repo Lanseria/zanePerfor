@@ -152,7 +152,7 @@ module.exports = () => {
     };
 
     config.security = {
-        domainWhiteList: ['http://127.0.0.1:8090'],
+        domainWhiteList: [],
         csrf: {
             enable: false,
             ignore: '/api/v1/report/**',
