@@ -10,8 +10,8 @@ module.exports = () => {
     config.redis = {
         client: {
             port: 6379, // Redis port
-            host: 'xx.xx.xx.xx', // Redis host
-            password: 'xxxxxx',
+            host: '127.0.0.1', // Redis host
+            password: '',
             db: 0,
         },
     };
@@ -52,7 +52,7 @@ module.exports = () => {
     };
 
     config.security = {
-        domainWhiteList: ['https://xxx.xx.com'],
+        domainWhiteList: ['http://limonplayer.cn'],
         csrf: {
             enable: false,
             ignore: '/api/v1/report/**',
