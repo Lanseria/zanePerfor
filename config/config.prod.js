@@ -20,7 +20,7 @@ module.exports = () => {
     const dbclients = {
         db3: {
             // url: 'mongodb://127.0.0.1:27018,127.0.0.1:27019,127.0.0.1:27020/performance?replicaSet=performance',
-            url: 'mongodb://127.0.0.1:27019/performance',
+            url: 'mongodb://127.0.0.1:27017/performance1',
             options: {
                 poolSize: 100,
                 keepAlive: 10000,
@@ -52,7 +52,7 @@ module.exports = () => {
     };
 
     config.security = {
-        domainWhiteList: [ 'https://xxx.xx.com' ],
+        domainWhiteList: ['https://xxx.xx.com'],
         csrf: {
             enable: false,
             ignore: '/api/v1/report/**',
