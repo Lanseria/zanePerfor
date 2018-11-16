@@ -22,7 +22,9 @@
 >  * 索引优化（已完成）
 >  * 大数据量下的（千万，亿级别）数据查询优化切换方案（千万级别以下实时查询，千万以上缓存读取） （开发中）
 >  * Kafka消息队列的引入和使用 （排期中）
->  * 生产环境架构（构建中）
+>  * Mongodb副本集读写分离开发（已完成）
+>  * Mongodb集群分片开发（开发中）
+>  * 生产环境架构（开发中）
 >  * 所有预警相关业务开发（排期中）
 >  * 集群配置 （排期中）
 >  * 性能测试（排期中）
@@ -33,10 +35,12 @@
 
 ## 项目详细文档
 https://blog.seosiwei.com/performance/index.html
-* 服务架构探索
-* 如何保证高并发秒杀场景的服务正常运行
-* 如何保证项目的高可用，高性能
-* 还有很多需要慢慢的去完善...
+* [系统高可用之Mongodb集群分片架构](https://blog.seosiwei.com/performance/colony.html)
+* [系统高可用之Mongodb副本集读写分离架构](https://blog.seosiwei.com/performance/replica_set.html)
+* [Servers集群模式下避免定时任务的多次执行](https://blog.seosiwei.com/performance/repeart_task.html)
+* [IP解析城市地理位置逻辑说明](https://blog.seosiwei.com/performance/iptask.html)
+* [项目定时任务功能说明](https://blog.seosiwei.com/performance/tasks.html)
+* ......
 
 ## 浏览器端使用说明
 
