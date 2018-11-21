@@ -4,7 +4,7 @@ module.exports = () => {
     const config = exports = {};
 
     // 百度地图api key
-    config.BAIDUAK = 'xxxxxxxxxx';
+    config.BAIDUAK = 'Ar0mnfHfbPny006oitSoFAUpPNO3Xssl';
 
     // redis配置
     config.redis = {

@@ -86,9 +86,9 @@ module.exports = () => {
     // shell重启
     config.shell_restart = {
         // mongodb重启shell,如果mongodb进程kill了，请求不了数据库时重启（可选填）
-        // mongodb: [ '/data/performance/mongodb-restart.sh' ],
+        mongodb: [ '/data/performance/mongodb-restart.sh' ],
         // node.js服务重启shell,mongodb重启时，数据库连接池有可能会断，这时需要重启服务
-        // servers: [ '/data/performance/servers-restart.sh' ],
+        servers: [ '/data/performance/servers-restart.sh' ],
     };
 
     // 百度地图api key
