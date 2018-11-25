@@ -18,26 +18,14 @@ class WebSystemService extends Service {
         if (search && search.system_domain) throw new Error('新增系统信息操作：系统已存在');
 
         // 存储数据
-        let token = '';
-        const date = new Date();
-        if (type === 'web') {
-            token = this.app.signwx({
-                systemName: query.systemName,
-                systemDomain: query.systemDomain,
-                timestamp: date,
-                random: this.app.randomString(),
-            }).paySign;
-        } else if (type === 'wx') {
-            token = query.app_id;
-        }
-
+        const token = this.app.randomString();
         const system = ctx.model.System();
         system.system_domain = query.system_domain;
         system.system_name = query.system_name;
         system.type = query.type;
         system.app_id = token;
         system.user_id = [];
-        system.create_time = date;
+        system.create_time = new Date();
         system.is_use = query.is_use;
         system.slow_page_time = query.slow_page_time || 5;
         system.slow_js_time = query.slow_js_time || 2;
@@ -140,7 +128,15 @@ class WebSystemService extends Service {
     // 删除某个系统
     async deleteSystem(appId) {
         const result = await this.ctx.model.System.findOneAndRemove({ app_id: appId }).exec();
-        this.app.redis.set(appId, '');
+        this.app.redis.set(appId, '', 'EX', 200);
+        setTimeout(async () => {
+            const conn = this.app.mongooseDB.get('db3');
+            try { await conn.dropCollection(`web_pages_${appId}`); } catch (err) { console.log(err); }
+            try { await conn.dropCollection(`web_ajaxs_${appId}`); } catch (err) { console.log(err); }
+            try { await conn.dropCollection(`web_errors_${appId}`); } catch (err) { console.log(err); }
+            try { await conn.dropCollection(`web_resources_${appId}`); } catch (err) { console.log(err); }
+            try { await conn.dropCollection(`web_environment_${appId}`); } catch (err) { console.log(err); }
+        }, 500);
         return result;
     }
 }

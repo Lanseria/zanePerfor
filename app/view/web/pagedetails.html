@@ -123,6 +123,30 @@
 	.sources-list li .s1 span.type {
 		width: 150px; 
 	}
+	@media (max-width: 768px) {
+		.block-time{
+			flex-direction: column;
+		}
+		.block-time .item-full{
+			width:100%;
+		}
+		.block-time .item-full li h1{
+			font-size: 16px;
+		}
+		.block-time .item-full li h2{
+			font-size: 20px;
+		}
+		.sources-list .h1{
+			font-size:15px;
+		}
+		.com_but_block .btn{
+			margin-right:5px;
+		}
+		.sources-list li .s1{
+			font-size:12px;
+		}
+	}
+	
 </style>
 <div class="com_content_body main pb100" id="pages" v-cloak>
 	<div class="com_top_title">
@@ -139,35 +163,35 @@
 			<h1 class="com_h1">页面平均耗时</h1>
 			<ul>
 				<li>
-					<h1>平均加载耗时(s)</h1>
+					<h1>加载耗时(s)</h1>
 					<h2 class="red">{{datas.load_time|toFixed(true)}}</h2>
 				</li>
 				<li>
-					<h1>平均白屏耗时(ms)</h1>
+					<h1>白屏耗时(ms)</h1>
 					<h2 class="red">{{datas.white_time|toFixed}}</h2>
 				</li>
 				<li>
-					<h1>平均DOM构建耗时(s)</h1>
+					<h1>DOM构建耗时(s)</h1>
 					<h2>{{datas.dom_time|toFixed(true)}}</h2>
 				</li>
 				<li>
-					<h1>平均解析DOM耗时(s)</h1>
+					<h1>解析DOM耗时(s)</h1>
 					<h2>{{datas.analysisDom_time|toFixed(true)}}</h2>
 				</li>
 				<li>
-					<h1>平均DNS解析耗时(ms)</h1>
+					<h1>DNS解析耗时(ms)</h1>
 					<h2>{{datas.dns_time|toFixed}}</h2>
 				</li>
 				<li>
-					<h1>平均TCP连接耗时(ms)</h1>
+					<h1>TCP连接耗时(ms)</h1>
 					<h2>{{datas.tcp_time|toFixed}}</h2>
 				</li>
 				<li>
-					<h1>平均request请求耗时(ms)</h1>
+					<h1>request请求耗时(ms)</h1>
 					<h2>{{datas.request_time|toFixed}}</h2>
 				</li>
 				<li>
-					<h1>平均页面准备耗时(ms)</h1>
+					<h1>页面准备耗时(ms)</h1>
 					<h2>{{datas.ready_time|toFixed}}</h2>
 				</li>
 			</ul>
@@ -301,6 +325,7 @@
 					type:'get',
 					url: config.baseApi + 'api/v1/pages/getPageDetails',
 					data: {
+						appId:this.appId,
 						id:this.id,
 					},
 					success: data => {

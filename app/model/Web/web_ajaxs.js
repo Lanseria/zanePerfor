@@ -20,7 +20,9 @@ module.exports = app => {
         mark_user: { type: String }, // 统一某一时间段用户标识
     });
 
-    WebAjaxsSchema.index({ speed_type: 1, app_id: 1, url: 1, create_time: -1 });
+    WebAjaxsSchema.index({ speed_type: 1, url: 1, create_time: -1 });
 
-    return conn.model('WebAjaxs', WebAjaxsSchema);
+    app.models.WebAjaxs = function(appId) {
+        return conn.model(`web_ajaxs_${appId}`, WebAjaxsSchema);
+    };
 };
